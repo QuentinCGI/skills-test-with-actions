@@ -34,5 +34,10 @@ jobs:
       - name: Install markdown lint dependencies
         run: npm install remark-cli remark-preset-lint-consistent
 
+      - name: Create remark config
+        run: |
+          echo '{ "plugins": [["remark-preset-lint-consistent"], ["remark-lint-emphasis-marker", "*"]] }' > .remarkrc
+
+
       - name: Run markdown lint
         run: npx remark . --use remark-preset-lint-consistent --frail
